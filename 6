@@ -1,0 +1,30 @@
+use company;
+create table Emp_5(eid int(20) primary key,ename varchar(20) not null, age int(20) not null, sal dec(10,2) not null);
+desc Emp_5;
+insert into Emp_5(eid,ename,age,sal)values(1,'A',20,10000.5),(2,'B',27,23000),(3,'C',23,40000),(4,'D',19,35000.74),(5,'E',30,30000);
+select* from Emp_5;
+delimiter //
+Create Procedure Fetch_Emp_dataa() 
+Begin
+Declare emp_id int;
+Declare emp_name varchar(20);
+Declare emp_age int;
+Declare emp_sal dec(10,2);
+Declare emp_cursor CURSOR FOR
+select eid,ename,age,sal from Emp_5;
+Declare Continue handler  for not found
+set @finished =1;
+open emp_cursor;
+set @finished=0;
+cursor_loop:LOOP
+Fetch emp_cursor INTO emp_id,emp_name,emp_age,emp_sal;
+if @finished=1 then
+leave cursor_loop;
+end if;
+select concat('EmpID:',emp_id,'Name:',emp_name,'Age;',emp_age,'Salary:',emp_sal) 
+as Emp_INFO;
+END LOOP;
+Close emp_cursor;
+end //
+Delimiter ;
+call Fetch_Emp_dataa();
