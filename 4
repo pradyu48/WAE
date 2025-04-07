@@ -1,0 +1,50 @@
+create database lab4;
+use lab4;
+create table CUSTOMER2(ID int primary key,NAME varchar(50) not null,AGE int not null,ADDRESS varchar(50) not null,SALARY decimal(10,2) not null);
+insert into CUSTOMER2(ID,NAME,AGE,ADDRESS,SALARY)values
+(1,'avinash',24,'mangalore',20000.00),
+(2,'Bhavish',24,'mangalore',30000.00),
+(3,'chetan',24,'mangalore',35000.00),
+(4,'kruthi',24,'mangalore',50000.00),
+(5,'Ramya',24,'mangalore',40000.00);
+select * from CUSTOMER2;
+
+DELIMITER //
+create trigger after_insert_salary_difference2 
+after insert on CUSTOMER
+for each row
+BEGIN 
+set @my_sal_diff=concat('salary inserted is ',NEW.salary);
+end; //
+DELIMITER ;
+
+insert into CUSTOMER2 (ID,NAME,AGE,ADDRESS,SALARY) values(7,'shankar',35,'bangalore',50000.00);
+select @my_sal_diff as sal_diff;
+
+DELIMITER //
+create trigger after_update_salary_difference12345
+after update on CUSTOMER2
+for each row
+BEGIN 
+declare old_sal decimal(10,2);
+declare new_sal decimal(10,2);
+set old_sal=OLD.salary;
+set new_sal=NEW.salary;
+set @my_sal_diff=concat('salary difference after update is ',NEW.salary-OLD.salary);
+end ; //
+DELIMITER ;
+
+update CUSTOMER2 
+set SALARY=55000.00 where ID=7;
+select @my_sal_diff as SAL_DIFF;
+delimiter //
+create trigger after_delete_salary_difference1545
+after delete on customer
+for each row
+begin
+set @my_sal_diff=concat('salary delete is ',old.salary);
+end; //
+delimiter ;
+
+delete from customer2 where id=4;
+select @my_sal_diff as SAL_DIFF;
