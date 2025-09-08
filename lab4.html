@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{
+margin:5;
+padding:5;
+box-sizing:border-box;
+}
+body{
+font-family:Arial,sans-serif;
+background-color:#f0f4ff8;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+form{
+display:flex;
+flex-direction:column;
+}
+
+label {
+color:#555;
+font-size:14px;
+font-weight:bold;
+margin-bottom:5px;
+display:block;
+}
+</style>
+<h1>html form</h1>
+<form action="/action_page.php">
+<label for="fname">First name:</label><br>
+<input type="text" id="fname"name="fname"><br>
+<label for="fname">Last name:</label><br>
+<input type="text" id="Iname"name="Iname"><br>
+
+
+<label for="usernmae">username</label><br>
+<input type="text" id="username" name="username"><br>
+<label for="password">Password</label><br>
+<input type="text" id="password" name="password"><br>
+
+
+<label for="email">Email</label><br>
+<input type="email" id="email" name="email"><br>
+
+
+
+
+
+<input type="checkbox" id="html" name="fav_language" value="html">
+<label for="html">GUM</label><br>
+<input type="checkbox" id="css" name="fav_language" value="css">
+<label for="css">GUM</label><br>
+<input type="checkbox" id="javascript" name="fav_language" value="javascript">
+<label for="javascript">BAZOOKA</label><br>
+
+<input type="radio" id="Vehicle 1" name="Vehicle 1 value="Bike">
+<label for="Vehicle 1">i have a bike</label><br>
+<input type="radio" id="Vehicle 2" name="Vehicle 2" value="car">
+<label for="Vehicle 2">i have a car</label><br>
+<input type="radio" id="Vehicle 3" name="Vehicle 3" value="boat">
+<label for="Vehicle 3">i dont have a boat</label><br>
+
+<label for="cars">choose a car:</label>
+<select id=cars" name="cars" size=4 multiple>
+<option value="omni">Omni</option>
+<option value="omni top model">Omni top model</option>
+<option value="maybach">maybach</option>
+<option value="lexus">lexus</option>
+</select>
+
+<h2>show a color picker</h2>
+<p> The <Strong>input type="color"</Strong> is used for input fields that should contain a color</p>
+<label for="color">Color</label><br>
+<input type="color" name="color"><br>
+
+
+
+<label for="birthday">Birthday:</label><br>
+<input type="date"  id="birthday" name="birthday"><br>
+
+<label for="quantity">Quantity(between 1 to 100):</label><br>
+<input type="number"  id="quantity" name="quantity"min="1" max="100"><br>
+
+
+
+
+
+
+
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
